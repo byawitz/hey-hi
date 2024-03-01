@@ -21,10 +21,11 @@ export default class Webhook extends BaseProvider {
   }
 
   async push(notification: NotificationObject): Promise<boolean> {
-    console.log(notification);
+    const body = Object.keys(this.body).length === 0 ? notification : this.body;
+
     try {
       const res = await fetch(this.url, {
-        body: JSON.stringify(this.body),
+        body: JSON.stringify(body),
         method: this.method,
         headers: this.headers,
       });

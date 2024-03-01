@@ -1,8 +1,10 @@
 import HeyHi from "../../src/HeyHi";
-import TelegramTest from "./ProviderInit/TelegramTest.js";
 import { describe, it } from "vitest";
+import PushBulletTest from "./ProviderInit/PushBulletTest";
 
-TelegramTest();
+// TelegramTest();
+// DiscordTest();
+// PushBulletTest();
 
 describe("Sending notifcation", () => {
   it("It should send notification ", async () => {
