@@ -1,11 +1,11 @@
 import HeyHi from "../../src/HeyHi";
 import { describe, it } from "vitest";
-import PushBulletTest from "./ProviderInit/PushBulletTest";
+import SlackTest from "./ProviderInit/SlackTest";
 
 // TelegramTest();
 // DiscordTest();
 // PushBulletTest();
-
+SlackTest();
 describe("Sending notifcation", () => {
   it("It should send notification ", async () => {
     await HeyHi.sendNotification({

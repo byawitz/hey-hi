@@ -6,6 +6,7 @@ import PushBullet from "./providers/PushBullet";
 import Webhook from "./providers/Webhook";
 import SingleIterator from "./base/SingleIterator";
 import NHelper from "./utils/NHelper";
+import Slack from "./providers/Slack";
 
 export default class HeyHi {
   private static providers: BaseProvider[] = [];
@@ -21,11 +22,18 @@ export default class HeyHi {
   }
 
   public static iterator(): SingleIterator[] {
-    return [Discord.getIteratorInfo(), PushBullet.getIteratorInfo(), Telegram.getIteratorInfo(), Webhook.getIteratorInfo()];
+    // prettier-ignore
+    return [
+      Discord.getIteratorInfo(),
+      PushBullet.getIteratorInfo(),
+      Telegram.getIteratorInfo(),
+      Slack.getIteratorInfo(),
+      Webhook.getIteratorInfo()
+    ];
   }
 
   static buildMarkdownMessage(notification: NotificationObject) {
-    return `${notification.icon !== "" ? notification.icon + "\n\n" : ""}*${notification.title}*\n${notification.content}`;
+    return `${notification.icon ? notification.icon + "\n\n" : ""}*${notification.title}*\n${notification.content}`;
   }
 
   static buildIconPlusTitle(notification: NotificationObject, stars = "*") {
