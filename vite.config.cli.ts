@@ -16,14 +16,19 @@ const getPackageNameCamelCase = () => {
 };
 
 const fileName: Record<string, string> = {
-  cjs: `cli.js`,
+  es: `cli.js`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
 
 module.exports = defineConfig({
   base: "./",
+  esbuild: {
+    target: "node12",
+    minifyIdentifiers: false,
+  },
   build: {
+    minify: "esbuild",
     outDir: "./dist/bin",
     lib: {
       entry: path.resolve(__dirname, "src/cli.ts"),
